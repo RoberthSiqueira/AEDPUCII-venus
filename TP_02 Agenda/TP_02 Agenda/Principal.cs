@@ -29,7 +29,7 @@ namespace TP_02_Agenda
                 Console.WriteLine("| 2 – Remover contato                                             |");
                 Console.WriteLine("| 3 – Alterar dados do contato (Todos os Contatos)                |");
                 Console.WriteLine("| 4 – Pesquisar contato (Por nome ou apelido)                     |");
-                Console.WriteLine("| 5 – Listar contatos po tipo                                     |");
+                Console.WriteLine("| 5 – Listar contatos por tipo                                     |");
                 Console.WriteLine("| 6 – Listar todos os contatos                                    |");
                 Console.WriteLine("| 7 - Listar aniversariantes do mês                               |");
                 Console.WriteLine("| 8 – Sair                                                        |");
@@ -47,6 +47,7 @@ namespace TP_02_Agenda
                     //Menu 01 - Cadastrar Contato
                     #region
                     case 1:
+
                         //Limpando Tela
                         Console.Clear();
 
@@ -132,7 +133,7 @@ namespace TP_02_Agenda
                         Contact.aniversario_ano = int.Parse(Console.ReadLine());
                         while (Contact.aniversario_ano > 2015 && Contact.aniversario_ano > 1)
                         {
-                            Console.Write("Aniversario - Ano: ");
+                            Console.Write("Favor Digitar um ano válido! Aniversario - Ano: ");
                             Contact.aniversario_ano = int.Parse(Console.ReadLine());
                         }
                         arquivo_agenda.Write(Contact.aniversario_ano + "; ");
@@ -141,7 +142,7 @@ namespace TP_02_Agenda
                         Contact.aniversario_mes = int.Parse(Console.ReadLine());
                         while (Contact.aniversario_mes < 1 || Contact.aniversario_mes > 12)
                         {
-                            Console.Write("Aniversario - Mês: ");
+                            Console.Write("Favor Digitar um mês válido! Aniversario - Mês: ");
                             Contact.aniversario_mes = int.Parse(Console.ReadLine());
                         }
                         arquivo_agenda.Write(Contact.aniversario_mes + "/");
@@ -150,23 +151,22 @@ namespace TP_02_Agenda
                         Contact.aniversario_dia = int.Parse(Console.ReadLine());
                         while (Contact.aniversario_dia > 31 || Contact.aniversario_dia < 1)
                         {
-                            Console.Write("Aniversario - Dia: ");
+                            Console.Write("Favor Digitar um dia válido! Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
                         }
                         if ((Contact.aniversario_mes == 4 || Contact.aniversario_mes == 6 || Contact.aniversario_mes == 9 || Contact.aniversario_mes == 11) && (Contact.aniversario_dia >= 31))
                         {
-                            Console.Write("Dia inválido! Aniversario - Dia: ");
+                            Console.Write("Favor Digitar um mês válido! Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
                         }
                         else if ((Contact.aniversario_mes == 2) || (Contact.aniversario_dia >= 29))
                         {
-                            Console.Write("Dia inválido! Aniversario - Dia: ");
+                            Console.Write("Favor Digitar um mês válido! Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
                         }
                         arquivo_agenda.Write(Contact.aniversario_dia + "/");
 
                         //Inserindo contato na CLista
-                        Agenda.InsereComeco(Contact);
                         Console.Write("\nContato cadastrado com sucesso!");
                         Console.ReadKey();
 
@@ -264,6 +264,7 @@ namespace TP_02_Agenda
                     case 6:
                         Console.Clear();
                         Contact.ListarTodosContatos(Agenda);
+                        Console.ReadKey();
                         break;
                     #endregion
                     //Fim da Listagem
