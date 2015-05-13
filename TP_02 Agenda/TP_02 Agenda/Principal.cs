@@ -156,12 +156,12 @@ namespace TP_02_Agenda
                         }
                         if ((Contact.aniversario_mes == 4 || Contact.aniversario_mes == 6 || Contact.aniversario_mes == 9 || Contact.aniversario_mes == 11) && (Contact.aniversario_dia >= 31))
                         {
-                            Console.Write("Favor Digitar um mês válido! Aniversario - Dia: ");
+                            Console.Write("Favor Digitar um dia válido! Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
                         }
                         else if ((Contact.aniversario_mes == 2) || (Contact.aniversario_dia >= 29))
                         {
-                            Console.Write("Favor Digitar um mês válido! Aniversario - Dia: ");
+                            Console.Write("Favor Digitar um dia válido! Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
                         }
                         arquivo_agenda.Write(Contact.aniversario_dia + "/");
