@@ -270,6 +270,7 @@ namespace TP_02_Agenda
         //Listar contatos pessoal e profissional
         public void ListarContatosPorTipo(CLista Agenda, int tipoContatoPessoal)
         {
+            Console.Clear();
             int cont = 0;
             int pagina_anterior = 0;
             int pagina_atual = 1;

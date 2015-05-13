@@ -139,7 +139,7 @@ namespace TP_02_Agenda
 
                         Console.Write("Aniversario - Mês: ");
                         Contact.aniversario_mes = int.Parse(Console.ReadLine());
-                        while (Contact.aniversario_mes < 1 && Contact.aniversario_mes > 12)
+                        while (Contact.aniversario_mes < 1 || Contact.aniversario_mes > 12)
                         {
                             Console.Write("Aniversario - Mês: ");
                             Contact.aniversario_mes = int.Parse(Console.ReadLine());
@@ -148,7 +148,7 @@ namespace TP_02_Agenda
 
                         Console.Write("Aniversario - Dia: ");
                         Contact.aniversario_dia = int.Parse(Console.ReadLine());
-                        while (Contact.aniversario_dia > 31 && Contact.aniversario_dia < 1)
+                        while (Contact.aniversario_dia > 31 || Contact.aniversario_dia < 1)
                         {
                             Console.Write("Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
@@ -158,7 +158,7 @@ namespace TP_02_Agenda
                             Console.Write("Dia inválido! Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
                         }
-                        else if ((Contact.aniversario_mes == 2) && (Contact.aniversario_dia >= 29))
+                        else if ((Contact.aniversario_mes == 2) || (Contact.aniversario_dia >= 29))
                         {
                             Console.Write("Dia inválido! Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
@@ -245,16 +245,14 @@ namespace TP_02_Agenda
                         //Limpando Tela
                         Console.Clear();
 
-                        int flag1 = 0;
-
                         do
                         {
                             Console.Write("Qual tipo de contato deseja listar?"
                                         + "\n(1- Pessoal / 2 - Profissional): ");
                             flag = int.Parse(Console.ReadLine());
-                        } while (!(flag1 == 1 || flag1 == 2));
+                        } while ((flag != 1 || flag != 2));
 
-                        Contact.ListarContatosPorTipo(Agenda, flag1); // chama metódo que irá realizar pesquisa
+                        Contact.ListarContatosPorTipo(Agenda, flag); // chama metódo que irá realizar pesquisa
                         Console.ReadKey();
 
                         break;
