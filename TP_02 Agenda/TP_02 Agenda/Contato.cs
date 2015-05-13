@@ -398,10 +398,8 @@ namespace TP_02_Agenda
         //Listar Todos os contatos aniversariantes
         public void ListarAniversariantes(CLista Agenda, int mes)
         {
-            //Quebra de Linha
-            Console.Write("\n\n");
             Console.WriteLine("LISTAGEM DE ANIVERSARIANTES");
-            Console.WriteLine("=========================\n\n");
+            Console.WriteLine("=========================\n");
 
             foreach (Contato contato in Agenda)
             {
