@@ -394,5 +394,29 @@ namespace TP_02_Agenda
                 }
             }
         } // Fim da listagem de todos os contatos
+
+        //Listar Todos os contatos aniversariantes
+        public void ListarAniversariantes(CLista Agenda, int mes)
+        {
+            //Quebra de Linha
+            Console.Write("\n\n");
+            Console.WriteLine("LISTAGEM DE ANIVERSARIANTES");
+            Console.WriteLine("=========================\n\n");
+
+            foreach (Contato contato in Agenda)
+            {
+                // imprime dados dos aniversariantes
+                if (contato.aniversario_mes == mes)
+                {
+                    Console.Write("\nNome: " + contato.nome);
+                    Console.Write("\nCelular: " + contato.celular);
+                    Console.Write("\nE-mail: " + contato.email);
+                    Console.Write("\nData de Aniversario: " + contato.aniversario_dia + "/" + contato.aniversario_mes + "/" + contato.aniversario_ano);
+
+                    //Quebra de Linha
+                    Console.Write("\n\n");
+                }
+            }
+        } // Fim da listagem de todos os contatos aniversariantes
     }
 }

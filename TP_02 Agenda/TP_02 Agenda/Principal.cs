@@ -271,6 +271,17 @@ namespace TP_02_Agenda
                     //Menu 07 - Listar aniversario
                     #region
                     case 7:
+                        // Limpar tela
+                        Console.Clear();
+
+                        int mes = 0;
+                        Console.Write("Informe o mês que deseja saber a lista de aniversariantes: ");
+                        mes = int.Parse(Console.ReadLine());
+
+                        if (mes >= 1 && mes <= 12)
+                            Contact.ListarAniversariantes(Agenda, mes);
+
+                        Console.ReadKey();
                         break;
                     #endregion
                     //Fim da listagem de aniversariantes
