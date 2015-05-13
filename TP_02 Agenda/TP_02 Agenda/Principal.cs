@@ -250,7 +250,7 @@ namespace TP_02_Agenda
                             Console.Write("Qual tipo de contato deseja listar?"
                                         + "\n(1- Pessoal / 2 - Profissional): ");
                             flag = int.Parse(Console.ReadLine());
-                        } while ((flag != 1 || flag != 2));
+                        } while (flag>=3);
 
                         Contact.ListarContatosPorTipo(Agenda, flag); // chama metódo que irá realizar pesquisa
                         Console.ReadKey();
