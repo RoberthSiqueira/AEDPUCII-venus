@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AED;
+using TP_02_Agenda;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -16,11 +17,25 @@ namespace TP_02_Agenda
             int opcao;
             CLista Agenda = new CLista();
             Contato Contact = new Contato();
-            StreamWriter escreve_agenda = new StreamWriter("Agenda.txt"); // instancia objeto para criar arquivo
             StreamReader carrega_agenda = new StreamReader("Agenda.txt"); // instancia objeto para criar arquivo
+            string linha = "";
+            string[] Vetor = new string[18]; // Qt De atributos
 
-            //Carregar memória com conteúdo arquivo
+            while (linha != null)
+            {
+                linha = carrega_agenda.ReadLine();
+                Vetor = linha.Split(";");
+
+                Contact.tipo = Vetor[0];
+                Contact.nome = Vetor[1];
+
+                Agenda.inserifim(contact);
+            }
+            carrega_agenda.Close();
             
+
+
+
 
             //Criação do Menu Principal
             do
@@ -277,6 +292,15 @@ namespace TP_02_Agenda
                     //Sair
                     case 8:
 
+                        //Escrever no arquivo o conteúdo da memória
+                        StreamWriter escreve_agenda = new StreamWriter("Agenda.txt"); // instancia objeto para criar arquivo
+                        for (int i = 1; i <= Agenda.Quantidade(); i++)
+                        {
+                            Contact = (Contato)Agenda.RetornaIndice(i);
+                            escreve_agenda.WriteLine(Contact.SalvarNoArquivo(Contact));
+                        }
+                        escreve_agenda.Close();
+
                         Console.WriteLine("|=================================================================|");
                         Console.WriteLine("| Obrigado por utilizar meu sistema de agenda eletrônica!         |");
                         Console.WriteLine("|                                                                 |");
@@ -297,7 +321,7 @@ namespace TP_02_Agenda
 
             } while (opcao != 8);
 
-            arquivo_agenda.Close();
+            //arquivo_agenda.Close();
         }
 
         static void Main(string[] args)

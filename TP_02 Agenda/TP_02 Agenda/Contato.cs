@@ -10,7 +10,7 @@ namespace TP_02_Agenda
 {
     class Contato
     {
-        public int tipo;
+        public int tipo = 0;
         public string nome;
         public string nickname;
         public string empresa;
@@ -27,6 +27,43 @@ namespace TP_02_Agenda
 
         public Contato()
         {
+            this.tipo = 0;
+        }
+
+        public string SalvarNoArquivo(Contato Contact) // Função para salvar as linhas no arquivo
+        {
+            string linhaContato = "";
+                      
+            // tipo (0); Nome (1) ;
+
+            linhaContato += Contact.tipo + ";";
+            linhaContato += Contact.nome + ";";
+            linhaContato += Contact.nickname + ";";
+            if (Contact.tipo == 2)
+            {
+                linhaContato += Contact.empresa + ";";
+                linhaContato += Contact.cargo + ";";
+            }
+            else
+            {
+                linhaContato += "#;";   //Atributo Empresa Quando Tipo 1
+                linhaContato += "#;";  //Atributo Cargo Quando Tipo 1
+            }
+            linhaContato += Contact.celular + ";";
+            linhaContato += Contact.telefone_resid + ";";
+            linhaContato += Contact.telefone_comer + ";";
+            linhaContato += Contact.email + ";";
+            linhaContato += Contact.twitter + ";";
+            linhaContato += Contact.endereco.tipo_logradouro + ";";
+            linhaContato += Contact.endereco.bairro + ";";
+            linhaContato += Contact.endereco.cidade + ";";
+            linhaContato += Contact.endereco.numero + ";";
+            linhaContato += Contact.endereco.cep + ";";
+            linhaContato += Contact.aniversario_dia + "/";
+            linhaContato += Contact.aniversario_mes + "/";
+            linhaContato += Contact.aniversario_ano + "/";
+            
+            return linhaContato;
         }
 
         //Deleta contato através do nome informado pelo usuário
