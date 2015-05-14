@@ -16,7 +16,11 @@ namespace TP_02_Agenda
             int opcao;
             CLista Agenda = new CLista();
             Contato Contact = new Contato();
-            StreamWriter arquivo_agenda = new StreamWriter("Agenda.txt"); // instancia objeto para criar arquivo
+            StreamWriter escreve_agenda = new StreamWriter("Agenda.txt"); // instancia objeto para criar arquivo
+            StreamReader carrega_agenda = new StreamReader("Agenda.txt"); // instancia objeto para criar arquivo
+
+            //Carregar memória com conteúdo arquivo
+            
 
             //Criação do Menu Principal
             do
@@ -64,70 +68,54 @@ namespace TP_02_Agenda
                             Contact.tipo = tipoContato;
 
                         } while (!(tipoContato == 1 || tipoContato == 2));
-                        arquivo_agenda.Write(Contact.tipo + "; ");
 
                         Console.Write("Nome: ");
                         Contact.nome = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.nome + "; ");
 
                         Console.Write("Nickname: ");
                         Contact.nickname = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.nickname + "; ");
 
                         if (tipoProfissional == true)
                         {
                             Console.Write("Empresa: ");
                             Contact.empresa = Console.ReadLine();
-                            arquivo_agenda.Write(Contact.empresa + "; ");
 
                             Console.Write("Cargo: ");
                             Contact.cargo = Console.ReadLine();
-                            arquivo_agenda.Write(Contact.cargo + "; ");
                         }
 
                         Console.Write("Celular: ");
                         Contact.celular = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.celular + "; ");
 
                         Console.Write("Telefone Residencial: ");
                         Contact.telefone_resid = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.telefone_resid + "; ");
 
                         Console.Write("Telefone Comercial: ");
                         Contact.telefone_comer = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.telefone_comer + "; ");
 
                         Console.Write("E-mail: ");
                         Contact.email = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.email + "; ");
 
                         Console.Write("Twitter: ");
                         Contact.twitter = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.twitter + "; ");
 
                         Console.Write("Tipo do logradouro (Rua/Av): ");
                         Contact.endereco.tipo_logradouro = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.endereco.tipo_logradouro + "; ");
 
                         Console.Write("Número: ");
                         Contact.endereco.numero = int.Parse(Console.ReadLine());
-                        arquivo_agenda.Write(Contact.endereco.numero + "; ");
 
                         Console.Write("Bairro: ");
                         Contact.endereco.bairro = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.endereco.bairro + "; ");
 
                         Console.Write("Cidade: ");
                         Contact.endereco.cidade = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.endereco.cidade + "; ");
 
                         Console.Write("Estado: ");
                         Contact.endereco.estado = Console.ReadLine();
-                        arquivo_agenda.Write(Contact.endereco.estado + "; ");
 
                         Console.Write("CEP: ");
                         Contact.endereco.cep = long.Parse(Console.ReadLine());
-                        arquivo_agenda.Write(Contact.endereco.cep + "; ");
 
                         Console.Write("Aniversario - Ano: ");
                         Contact.aniversario_ano = int.Parse(Console.ReadLine());
@@ -136,7 +124,6 @@ namespace TP_02_Agenda
                             Console.Write("Favor Digitar um ano válido! Aniversario - Ano: ");
                             Contact.aniversario_ano = int.Parse(Console.ReadLine());
                         }
-                        arquivo_agenda.Write(Contact.aniversario_ano + "; ");
 
                         Console.Write("Aniversario - Mês: ");
                         Contact.aniversario_mes = int.Parse(Console.ReadLine());
@@ -145,7 +132,6 @@ namespace TP_02_Agenda
                             Console.Write("Favor Digitar um mês válido! Aniversario - Mês: ");
                             Contact.aniversario_mes = int.Parse(Console.ReadLine());
                         }
-                        arquivo_agenda.Write(Contact.aniversario_mes + "/");
 
                         Console.Write("Aniversario - Dia: ");
                         Contact.aniversario_dia = int.Parse(Console.ReadLine());
@@ -164,7 +150,6 @@ namespace TP_02_Agenda
                             Console.Write("Favor Digitar um dia válido! Aniversario - Dia: ");
                             Contact.aniversario_dia = int.Parse(Console.ReadLine());
                         }
-                        arquivo_agenda.Write(Contact.aniversario_dia + "/");
 
                         //Inserindo contato na CLista
                         Console.Write("\nContato cadastrado com sucesso!");
