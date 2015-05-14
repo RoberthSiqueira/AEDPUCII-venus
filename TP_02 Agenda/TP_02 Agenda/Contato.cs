@@ -10,7 +10,7 @@ namespace TP_02_Agenda
 {
     class Contato
     {
-        public int tipo = 0;
+        public int tipo;
         public string nome;
         public string nickname;
         public string empresa;
@@ -27,14 +27,17 @@ namespace TP_02_Agenda
 
         public Contato()
         {
-            this.tipo = 0;
         }
 
         public string SalvarNoArquivo(Contato Contact) // Função para salvar as linhas no arquivo
         {
             string linhaContato = "";
-                      
-            // tipo (0); Nome (1) ;
+
+            #region Posição de cada atriuto da classe contida num array
+            // Tipo (0); Nome (1); Nickname (2); Empresa (3); Cargo (4); Celular (5); Telefone Residencial (6); 
+            // Telefone Comercial (7); E-mail (8); Twitter (9); Endereço Tipo (10); Endereço Número (11); Endreço Bairro (12);
+            // Endereço Cidade (13); Endereço Estado (14); Endereço CEP (15); Aniversário Dia (16); Aniversário Mês (17); Aniversário Ano (18); 
+            #endregion
 
             linhaContato += Contact.tipo + ";";
             linhaContato += Contact.nome + ";";
@@ -55,13 +58,14 @@ namespace TP_02_Agenda
             linhaContato += Contact.email + ";";
             linhaContato += Contact.twitter + ";";
             linhaContato += Contact.endereco.tipo_logradouro + ";";
+            linhaContato += Contact.endereco.numero + ";";
             linhaContato += Contact.endereco.bairro + ";";
             linhaContato += Contact.endereco.cidade + ";";
-            linhaContato += Contact.endereco.numero + ";";
+            linhaContato += Contact.endereco.estado + ";";
             linhaContato += Contact.endereco.cep + ";";
-            linhaContato += Contact.aniversario_dia + "/";
-            linhaContato += Contact.aniversario_mes + "/";
-            linhaContato += Contact.aniversario_ano + "/";
+            linhaContato += Contact.aniversario_dia + ";";
+            linhaContato += Contact.aniversario_mes + ";";
+            linhaContato += Contact.aniversario_ano + ";";
             
             return linhaContato;
         }

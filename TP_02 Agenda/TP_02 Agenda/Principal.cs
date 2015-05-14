@@ -17,27 +17,50 @@ namespace TP_02_Agenda
             int opcao;
             CLista Agenda = new CLista();
             Contato Contact = new Contato();
-            StreamReader carrega_agenda = new StreamReader("Agenda.txt"); // instancia objeto para criar arquivo
+            StreamReader carrega_agenda = new StreamReader("Agenda.txt"); // instancia objeto para ler arquivo
             string linha = "";
-            string[] Vetor = new string[18]; // Qt De atributos
+            string[] Vetor = new string[19]; // Qt De atributos
 
-            while (linha != null)
+            while (linha != null) // Enquanto tiver linhas no arquivo irá carregar os contatoss
             {
-                linha = carrega_agenda.ReadLine();
-                Vetor = linha.Split(";");
+                linha = carrega_agenda.ReadLine(); //Lê a linha do arquivo
+                Vetor = linha.Split(';'); // A cada atributo entre ';' se torna uma posição do array
+                
+                // Conversão de atributos de tipos numéricos
+                int tipo = int.Parse(Vetor[0]);
+                int endNumero = int.Parse(Vetor[11]);
+                long endCep = int.Parse(Vetor[15]);
+                int aniver_dia = int.Parse(Vetor[16]);
+                int aniver_mes = int.Parse(Vetor[17]);
+                int aniver_ano = int.Parse(Vetor[18]);
 
-                Contact.tipo = Vetor[0];
+                //Atribuição do que está contido na posição do array para determinado atributo do Contato
+                Contact.tipo = tipo;
                 Contact.nome = Vetor[1];
+                Contact.nickname = Vetor[2];
+                Contact.empresa = Vetor[3];
+                Contact.cargo = Vetor[4];
+                Contact.celular = Vetor[5];
+                Contact.telefone_resid = Vetor[6];
+                Contact.telefone_comer = Vetor[7];
+                Contact.email = Vetor[8];
+                Contact.twitter = Vetor[9];
+                Contact.endereco.tipo_logradouro = Vetor[10];
+                Contact.endereco.numero = endNumero;
+                Contact.endereco.bairro = Vetor[12];
+                Contact.endereco.cidade = Vetor[13];
+                Contact.endereco.estado = Vetor[14];
+                Contact.endereco.cep = endCep;
+                Contact.aniversario_dia = aniver_dia;
+                Contact.aniversario_mes = aniver_mes;
+                Contact.aniversario_ano = aniver_ano;
 
-                Agenda.inserifim(contact);
+                Agenda.InsereFim(Contact); // Cada contato é inserido no fim da lista
             }
-            carrega_agenda.Close();
-            
-
-
-
+            carrega_agenda.Close(); //Fecha arquivo
 
             //Criação do Menu Principal
+            #region Menu e controle do sistema
             do
             {
                 Console.Clear();
@@ -55,16 +78,14 @@ namespace TP_02_Agenda
                 Console.WriteLine("===================================================================");
                 Console.Write("\n\n Qual a opção desejada ? ");
                 opcao = int.Parse(Console.ReadLine());
-
                 //Limpando a Tela
                 Console.Clear();
 
                 //Implementando as opções
-
                 switch (opcao)
                 {
-                    //Menu 01 - Cadastrar Contato
-                    #region
+                    //Menu 01 
+                    #region Cadastrar Contato
                     case 1:
 
                         //Limpando Tela
@@ -174,8 +195,8 @@ namespace TP_02_Agenda
                     #endregion
                     // Fim cadastro de contato
 
-                    //Menu 02 - Remover Contato, pelo nome
-                    #region
+                    //Menu 02 
+                    #region Remover Contato, pelo nome
                     case 2:
                         //Limpando Tela
                         Console.Clear();
@@ -190,7 +211,8 @@ namespace TP_02_Agenda
                     #endregion
                     // Fim remoção de contato
 
-                    #region
+                    //Menu 03
+                    #region Alteração Contato
                     //Menu 03
                     case 3:
                         Console.Clear();
@@ -204,8 +226,8 @@ namespace TP_02_Agenda
                     #endregion
                     // Fim da alteração
 
-                    //Menu 04 - Pesquisar contato, pelo nome ou pelo apelido
-                    #region
+                    //Menu 04
+                    #region Pesquisar contato, pelo nome ou pelo apelido
                     case 4:
                         //Limpando Tela
                         Console.Clear();
@@ -239,8 +261,8 @@ namespace TP_02_Agenda
                     #endregion
                     // Fim pesquisa
 
-                    //Menu 05 - Listar contatos por tipo
-                    #region
+                    //Menu 05
+                    #region Listar contatos por tipo
                     case 5:
                         //Limpando Tela
                         Console.Clear();
@@ -250,7 +272,7 @@ namespace TP_02_Agenda
                             Console.Write("Qual tipo de contato deseja listar?"
                                         + "\n(1- Pessoal / 2 - Profissional): ");
                             flag = int.Parse(Console.ReadLine());
-                        } while (flag>=3);
+                        } while (flag >= 3);
 
                         Contact.ListarContatosPorTipo(Agenda, flag); // chama metódo que irá realizar pesquisa
                         Console.ReadKey();
@@ -259,8 +281,8 @@ namespace TP_02_Agenda
                     #endregion
                     //Fim da Listagem por Tipo
 
-                    //Menu 06 - Listar todos os contatos
-                    #region
+                    //Menu 06
+                    #region Listar todos os contatos
                     case 6:
                         Console.Clear();
                         Contact.ListarTodosContatos(Agenda);
@@ -269,8 +291,8 @@ namespace TP_02_Agenda
                     #endregion
                     //Fim da Listagem
 
-                    //Menu 07 - Listar aniversario
-                    #region
+                    //Menu 07
+                    #region Listar aniversario
                     case 7:
                         // Limpar tela
                         Console.Clear();
@@ -287,41 +309,43 @@ namespace TP_02_Agenda
                     #endregion
                     //Fim da listagem de aniversariantes
 
-                    //Menu 08 - Sair
-                    #region
+                    //Menu 08
+                    #region Sair e salvar todo o conteúdo no arquivo
                     //Sair
                     case 8:
 
                         //Escrever no arquivo o conteúdo da memória
-                        StreamWriter escreve_agenda = new StreamWriter("Agenda.txt"); // instancia objeto para criar arquivo
+                        StreamWriter escreve_agenda = new StreamWriter("Agenda.txt"); // instancia objeto para escrever arquivo
                         for (int i = 1; i <= Agenda.Quantidade(); i++)
                         {
-                            Contact = (Contato)Agenda.RetornaIndice(i);
+                            Contact = (Contato)Agenda.RetornaIndice(i); //retorna contato no índice determinado
                             escreve_agenda.WriteLine(Contact.SalvarNoArquivo(Contact));
                         }
-                        escreve_agenda.Close();
+                        escreve_agenda.Close(); //Fecha arquivo
 
                         Console.WriteLine("|=================================================================|");
-                        Console.WriteLine("| Obrigado por utilizar meu sistema de agenda eletrônica!         |");
+                        Console.WriteLine("|     Obrigado por utilizar meu sistema de agenda eletrônica!     |");
                         Console.WriteLine("|                                                                 |");
-                        Console.WriteLine("|             Copyright©  -    Fellipe Couto & Roberth Siqueira   |");
+                        Console.WriteLine("|     Copyright©   -   Fellipe Couto & Roberth Siqueira           |");
                         Console.WriteLine("|=================================================================|");
                         break;
                     #endregion
                     //Sair
 
-                    //Opção invalida
-                    #region
+                    //Default
+                    #region Opção invalida
                     //Opção Invalida!
                     default:
                         Console.Write("Opção Invalida! \n\n");
                         break;
                     #endregion
+                    //Fim Default, Opção Inválida!
                 }
 
             } while (opcao != 8);
 
-            //arquivo_agenda.Close();
+            #endregion
+            //Fim menu
         }
 
         static void Main(string[] args)
