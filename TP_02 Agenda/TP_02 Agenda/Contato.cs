@@ -42,16 +42,10 @@ namespace TP_02_Agenda
             linhaContato += Contact.tipo + ";";
             linhaContato += Contact.nome + ";";
             linhaContato += Contact.nickname + ";";
-            if (Contact.tipo == 2)
-            {
-                linhaContato += Contact.empresa + ";";
-                linhaContato += Contact.cargo + ";";
-            }
-            else
-            {
-                linhaContato += "#;";   //Atributo Empresa Quando Tipo 1
-                linhaContato += "#;";  //Atributo Cargo Quando Tipo 1
-            }
+
+            linhaContato += Contact.empresa + ";";
+            linhaContato += Contact.cargo + ";";
+
             linhaContato += Contact.celular + ";";
             linhaContato += Contact.telefone_resid + ";";
             linhaContato += Contact.telefone_comer + ";";
@@ -66,7 +60,7 @@ namespace TP_02_Agenda
             linhaContato += Contact.aniversario_dia + ";";
             linhaContato += Contact.aniversario_mes + ";";
             linhaContato += Contact.aniversario_ano + ";";
-            
+
             return linhaContato;
         }
 
@@ -91,8 +85,6 @@ namespace TP_02_Agenda
         //Altera contato através do nome informado pelo usuário
         public void AlterarContato(CLista Agenda, string nomeAlterar)
         {
-            //Abrindo Arquivi para Escrita
-            StreamWriter arquivo_agenda = new StreamWriter("Agenda.txt");
             Contato Contact = new Contato();
 
             Console.Clear();
@@ -102,25 +94,25 @@ namespace TP_02_Agenda
                 if (contato.nome.Equals(nomeAlterar))
                 {
                     Console.Write("Tipo: " + contato.tipo);
-                    Console.Write("Nome: " + contato.nome);
-                    Console.Write("Apelido: " + contato.nickname);
+                    Console.Write("\nNome: " + contato.nome);
+                    Console.Write("\nApelido: " + contato.nickname);
                     if (contato.tipo.Equals(2))
                     {
-                        Console.Write("Empresa: " + contato.empresa);
-                        Console.Write("Cargo: " + contato.cargo);
+                        Console.Write("\nEmpresa: " + contato.empresa);
+                        Console.Write("\nCargo: " + contato.cargo);
                     }
-                    Console.Write("Celular: " + contato.celular);
-                    Console.Write("Telefone Residencial: " + contato.telefone_resid);
-                    Console.Write("Telefone Comercial: " + contato.telefone_comer);
-                    Console.Write("E-mail: " + contato.email);
-                    Console.Write("Twitter: " + contato.twitter);
-                    Console.Write("Tipo do logradouro (Rua/Av): " + contato.endereco.tipo_logradouro);
-                    Console.Write("Número: " + contato.endereco.numero);
-                    Console.Write("Bairro: " + contato.endereco.bairro);
-                    Console.Write("Cidade: " + contato.endereco.cidade);
-                    Console.Write("Estado: " + contato.endereco.estado);
-                    Console.Write("CEP: " + contato.endereco.cep);
-                    Console.Write("Aniversário: " + contato.aniversario_dia + "/" + contato.aniversario_mes + "/" + contato.aniversario_ano);
+                    Console.Write("\nCelular: " + contato.celular);
+                    Console.Write("\nTelefone Residencial: " + contato.telefone_resid);
+                    Console.Write("\nTelefone Comercial: " + contato.telefone_comer);
+                    Console.Write("\nE-mail: " + contato.email);
+                    Console.Write("\nTwitter: " + contato.twitter);
+                    Console.Write("\nTipo do logradouro (Rua/Av): " + contato.endereco.tipo_logradouro);
+                    Console.Write("\nNúmero: " + contato.endereco.numero);
+                    Console.Write("\nBairro: " + contato.endereco.bairro);
+                    Console.Write("\nCidade: " + contato.endereco.cidade);
+                    Console.Write("\nEstado: " + contato.endereco.estado);
+                    Console.Write("\nCEP: " + contato.endereco.cep);
+                    Console.Write("\nAniversário: " + contato.aniversario_dia + "/" + contato.aniversario_mes + "/" + contato.aniversario_ano);
 
                     Console.Write("\n\n===========================================");
                     Console.Write("\t Alteração do Dados do Contato");
@@ -129,98 +121,78 @@ namespace TP_02_Agenda
                     Console.Write("Nickname: ");
                     Contact.nickname = Console.ReadLine();
                     contato.nickname = Contact.nickname;
-                    arquivo_agenda.Write(Contact.nickname + "; ");
 
 
                     if (contato.tipo.Equals(2))
                     {
-                        Console.Write("Empresa: ");
+                        Console.Write("\nEmpresa: ");
                         Contact.empresa = Console.ReadLine();
                         contato.empresa = Contact.empresa;
-                        arquivo_agenda.Write(Contact.empresa + "; ");
 
-                        Console.Write("Cargo: ");
+                        Console.Write("\nCargo: ");
                         Contact.cargo = Console.ReadLine();
                         contato.cargo = Contact.cargo;
-                        arquivo_agenda.Write(Contact.cargo + "; ");
                     }
 
-                    Console.Write("Celular: ");
+                    Console.Write("\nCelular: ");
                     Contact.celular = Console.ReadLine();
                     contato.celular = Contact.celular;
-                    arquivo_agenda.Write(Contact.celular + "; ");
 
-                    Console.Write("Telefone Residencial: ");
+                    Console.Write("\nTelefone Residencial: ");
                     Contact.telefone_resid = Console.ReadLine();
                     contato.telefone_resid = Contact.telefone_resid;
-                    arquivo_agenda.Write(Contact.telefone_resid + "; ");
 
-                    Console.Write("Telefone Comercial: ");
+                    Console.Write("\nTelefone Comercial: ");
                     Contact.telefone_comer = Console.ReadLine();
                     contato.telefone_comer = Contact.telefone_comer;
-                    arquivo_agenda.Write(Contact.telefone_comer + "; ");
 
-                    Console.Write("E-mail: ");
+                    Console.Write("\nE-mail: ");
                     Contact.email = Console.ReadLine();
                     contato.email = Contact.email;
-                    arquivo_agenda.Write(Contact.email + "; ");
 
-                    Console.Write("Twitter: ");
+                    Console.Write("\nTwitter: ");
                     Contact.twitter = Console.ReadLine();
                     contato.twitter = Contact.twitter;
-                    arquivo_agenda.Write(Contact.twitter + "; ");
 
-                    Console.Write("Tipo do logradouro (Rua/Av): ");
+                    Console.Write("\nTipo do logradouro (Rua/Av): ");
                     Contact.endereco.tipo_logradouro = Console.ReadLine();
                     contato.endereco.tipo_logradouro = Contact.endereco.tipo_logradouro;
-                    arquivo_agenda.Write(Contact.endereco.tipo_logradouro + "; ");
 
-                    Console.Write("Número: ");
+                    Console.Write("\nNúmero: ");
                     Contact.endereco.numero = int.Parse(Console.ReadLine());
                     contato.endereco.numero = Contact.endereco.numero;
-                    arquivo_agenda.Write(Contact.endereco.numero + "; ");
 
-                    Console.Write("Bairro: ");
+                    Console.Write("\nBairro: ");
                     Contact.endereco.bairro = Console.ReadLine();
                     contato.endereco.bairro = Contact.endereco.bairro;
-                    arquivo_agenda.Write(Contact.endereco.bairro + "; ");
 
-                    Console.Write("Cidade: ");
+                    Console.Write("\nCidade: ");
                     Contact.endereco.cidade = Console.ReadLine();
                     contato.endereco.cidade = Contact.endereco.cidade;
-                    arquivo_agenda.Write(Contact.endereco.cidade + "; ");
 
-                    Console.Write("Estado: ");
+                    Console.Write("\nEstado: ");
                     Contact.endereco.estado = Console.ReadLine();
                     contato.endereco.estado = Contact.endereco.estado;
-                    arquivo_agenda.Write(Contact.endereco.estado + "; ");
 
-                    Console.Write("CEP: ");
+                    Console.Write("\nCEP: ");
                     Contact.endereco.cep = long.Parse(Console.ReadLine());
                     contato.endereco.cep = Contact.endereco.cep;
-                    arquivo_agenda.Write(Contact.endereco.cep + "; ");
 
-                    Console.Write("Aniversario - Dia: ");
+                    Console.Write("\nAniversario - Dia: ");
                     Contact.aniversario_dia = int.Parse(Console.ReadLine());
                     contato.aniversario_dia = Contact.aniversario_dia;
-                    arquivo_agenda.Write(Contact.aniversario_dia + "/");
 
-                    Console.Write("Aniversario - Mês: ");
+                    Console.Write("\nAniversario - Mês: ");
                     Contact.aniversario_mes = int.Parse(Console.ReadLine());
                     contato.aniversario_mes = Contact.aniversario_mes;
-                    arquivo_agenda.Write(Contact.aniversario_mes + "/");
 
-                    Console.Write("Aniversario - Ano: ");
+                    Console.Write("\nAniversario - Ano: ");
                     Contact.aniversario_ano = int.Parse(Console.ReadLine());
                     contato.aniversario_ano = Contact.aniversario_ano;
-                    arquivo_agenda.Write(Contact.aniversario_ano + "; ");
 
                     //Inserindo contato na CLista
                     Console.Write("\nContato alterado com sucesso!");
                     Console.ReadKey();
-
-                    //Fechando Arquivo
-                    arquivo_agenda.Close();
 
                 }
             }
@@ -316,19 +288,20 @@ namespace TP_02_Agenda
             int pagina_anterior = 0;
             int pagina_atual = 1;
 
-            for (int i = 0; i < Agenda.Quantidade(); i++)
+            foreach (Contato contato in Agenda)
             {
-                cont++;
-
-                if (pagina_anterior != pagina_atual)
+                if (contato.tipo == tipoContatoPessoal)
                 {
-                    Console.WriteLine("LISTAGEM DE CONTATOS ( PÁGINA " + pagina_atual + ")");
-                    Console.WriteLine("=========================\n\n");
-                }
+                    cont++;
 
-                pagina_anterior = pagina_atual;
-                foreach (Contato contato in Agenda)
-                {
+                    if (pagina_anterior != pagina_atual)
+                    {
+                        Console.WriteLine("LISTAGEM DE CONTATOS ( PÁGINA " + pagina_atual + ")");
+                        Console.WriteLine("=========================\n\n");
+                    }
+
+                    pagina_anterior = pagina_atual;
+
                     // imprime dados 
                     if (tipoContatoPessoal == 1)
                         Console.Write("Tipo: Pessoal");
@@ -379,10 +352,9 @@ namespace TP_02_Agenda
             int pagina_anterior = 0;
             int pagina_atual = 1;
 
-            for (int i = 0; i < Agenda.Quantidade(); i++)
-            {
-                cont++;
 
+            foreach (Contato contato in Agenda)
+            {
                 if (pagina_anterior != pagina_atual)
                 {
                     Console.WriteLine("LISTAGEM DE CONTATOS ( PÁGINA " + pagina_atual + ")");
@@ -390,51 +362,52 @@ namespace TP_02_Agenda
                 }
 
                 pagina_anterior = pagina_atual;
-                foreach (Contato contato in Agenda)
+
+                // imprime dados 
+                if (contato.tipo == 1)
+                    Console.Write("Tipo: Pessoal");
+                else
                 {
-                    // imprime dados 
-                    if (contato.tipo == 1)
-                        Console.Write("Tipo: Pessoal");
-                    else
-                    {
-                        Console.Write("\nTipo: Profissional");
-                    }
-
-                    Console.Write("\nNome: " + contato.nome);
-                    Console.Write("\nNickname: " + contato.nickname);
-
-                    if (contato.tipo == 2)
-                    {
-                        Console.Write("\nEmpresa: " + contato.empresa);
-                        Console.Write("\nCargo: " + contato.cargo);
-                    }
-                    Console.Write("\nCelular: " + contato.celular);
-                    Console.Write("\nTelefone Residencial: " + contato.telefone_resid);
-                    Console.Write("\nTelefone Comercial: " + contato.telefone_comer);
-                    Console.Write("\nE-mail: " + contato.email);
-                    Console.Write("\nTwitter: " + contato.twitter);
-                    Console.Write("\nTipo do logradouro (Rua/Av): " + contato.endereco.tipo_logradouro);
-                    Console.Write("\nNúmero: " + contato.endereco.numero);
-                    Console.Write("\nBairro: " + contato.endereco.bairro);
-                    Console.Write("\nCidade: " + contato.endereco.cidade);
-                    Console.Write("\nEstado: " + contato.endereco.estado);
-                    Console.Write("\nCEP: " + contato.endereco.cep);
-                    Console.Write("\nAniversario - Dia: " + contato.aniversario_dia);
-                    Console.Write("\nAniversario - Mês: " + contato.aniversario_mes);
-                    Console.Write("\nAniversario - Ano: " + contato.aniversario_ano);
-
-                    if (cont % 3 == 0)
-                    {
-                        cont = 0;
-                        pagina_atual++;
-                        pagina_anterior = pagina_atual - 1;
-                    }
-
-                    //Quebra de Linha
-                    Console.Write("\n\n");
+                    Console.Write("\nTipo: Profissional");
                 }
+
+                Console.Write("\nNome: " + contato.nome);
+                Console.Write("\nNickname: " + contato.nickname);
+
+                if (contato.tipo == 2)
+                {
+                    Console.Write("\nEmpresa: " + contato.empresa);
+                    Console.Write("\nCargo: " + contato.cargo);
+                }
+                Console.Write("\nCelular: " + contato.celular);
+                Console.Write("\nTelefone Residencial: " + contato.telefone_resid);
+                Console.Write("\nTelefone Comercial: " + contato.telefone_comer);
+                Console.Write("\nE-mail: " + contato.email);
+                Console.Write("\nTwitter: " + contato.twitter);
+                Console.Write("\nTipo do logradouro (Rua/Av): " + contato.endereco.tipo_logradouro);
+                Console.Write("\nNúmero: " + contato.endereco.numero);
+                Console.Write("\nBairro: " + contato.endereco.bairro);
+                Console.Write("\nCidade: " + contato.endereco.cidade);
+                Console.Write("\nEstado: " + contato.endereco.estado);
+                Console.Write("\nCEP: " + contato.endereco.cep);
+                Console.Write("\nAniversario - Dia: " + contato.aniversario_dia);
+                Console.Write("\nAniversario - Mês: " + contato.aniversario_mes);
+                Console.Write("\nAniversario - Ano: " + contato.aniversario_ano);
+
+                cont++;
+
+                if (cont % 3 == 0)
+                {
+                    cont = 0;
+                    pagina_atual++;
+                    pagina_anterior = pagina_atual - 1;
+                }
+
+                //Quebra de Linha
+                Console.Write("\n\n");
             }
-        } // Fim da listagem de todos os contatos
+        }// Fim da listagem de todos os contatos
+
 
         //Listar Todos os contatos aniversariantes
         public void ListarAniversariantes(CLista Agenda, int mes)

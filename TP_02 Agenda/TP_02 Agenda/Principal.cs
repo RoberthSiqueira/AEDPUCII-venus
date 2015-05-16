@@ -16,14 +16,15 @@ namespace TP_02_Agenda
         {
             int opcao;
             CLista Agenda = new CLista();
+            Contato CarregaContato = new Contato();
             Contato Contact = new Contato();
             StreamReader carrega_agenda = new StreamReader("Agenda.txt"); // instancia objeto para ler arquivo
-            string linha = "";
+            string linha = carrega_agenda.ReadLine();
             string[] Vetor = new string[19]; // Qt De atributos
 
             while (linha != null) // Enquanto tiver linhas no arquivo irá carregar os contatoss
             {
-                linha = carrega_agenda.ReadLine(); //Lê a linha do arquivo
+                
                 Vetor = linha.Split(';'); // A cada atributo entre ';' se torna uma posição do array
                 
                 // Conversão de atributos de tipos numéricos
@@ -35,27 +36,29 @@ namespace TP_02_Agenda
                 int aniver_ano = int.Parse(Vetor[18]);
 
                 //Atribuição do que está contido na posição do array para determinado atributo do Contato
-                Contact.tipo = tipo;
-                Contact.nome = Vetor[1];
-                Contact.nickname = Vetor[2];
-                Contact.empresa = Vetor[3];
-                Contact.cargo = Vetor[4];
-                Contact.celular = Vetor[5];
-                Contact.telefone_resid = Vetor[6];
-                Contact.telefone_comer = Vetor[7];
-                Contact.email = Vetor[8];
-                Contact.twitter = Vetor[9];
-                Contact.endereco.tipo_logradouro = Vetor[10];
-                Contact.endereco.numero = endNumero;
-                Contact.endereco.bairro = Vetor[12];
-                Contact.endereco.cidade = Vetor[13];
-                Contact.endereco.estado = Vetor[14];
-                Contact.endereco.cep = endCep;
-                Contact.aniversario_dia = aniver_dia;
-                Contact.aniversario_mes = aniver_mes;
-                Contact.aniversario_ano = aniver_ano;
+                CarregaContato.tipo = tipo;
+                CarregaContato.nome = Vetor[1];
+                CarregaContato.nickname = Vetor[2];
+                CarregaContato.empresa = Vetor[3];
+                CarregaContato.cargo = Vetor[4];
+                CarregaContato.celular = Vetor[5];
+                CarregaContato.telefone_resid = Vetor[6];
+                CarregaContato.telefone_comer = Vetor[7];
+                CarregaContato.email = Vetor[8];
+                CarregaContato.twitter = Vetor[9];
+                CarregaContato.endereco.tipo_logradouro = Vetor[10];
+                CarregaContato.endereco.numero = endNumero;
+                CarregaContato.endereco.bairro = Vetor[12];
+                CarregaContato.endereco.cidade = Vetor[13];
+                CarregaContato.endereco.estado = Vetor[14];
+                CarregaContato.endereco.cep = endCep;
+                CarregaContato.aniversario_dia = aniver_dia;
+                CarregaContato.aniversario_mes = aniver_mes;
+                CarregaContato.aniversario_ano = aniver_ano;
 
-                Agenda.InsereFim(Contact); // Cada contato é inserido no fim da lista
+                Agenda.InsereFim(CarregaContato);
+                CarregaContato = new Contato();// Cada contato é inserido no fim da lista
+                linha = carrega_agenda.ReadLine(); //Lê a linha do arquivo
             }
             carrega_agenda.Close(); //Fecha arquivo
 
@@ -90,7 +93,7 @@ namespace TP_02_Agenda
 
                         //Limpando Tela
                         Console.Clear();
-
+                        Contato Cadastro = new Contato();
                         int tipoContato; // Recebe tipo do Contato
                         bool tipoProfissional = false; // Realizar controle do tipo de Contato
 
@@ -101,92 +104,94 @@ namespace TP_02_Agenda
                             tipoContato = int.Parse(Console.ReadLine());
                             if (tipoContato == 2)
                                 tipoProfissional = true;
-                            Contact.tipo = tipoContato;
+                            Cadastro.tipo = tipoContato;
 
                         } while (!(tipoContato == 1 || tipoContato == 2));
 
                         Console.Write("Nome: ");
-                        Contact.nome = Console.ReadLine();
+                        Cadastro.nome = Console.ReadLine();
 
                         Console.Write("Nickname: ");
-                        Contact.nickname = Console.ReadLine();
+                        Cadastro.nickname = Console.ReadLine();
 
                         if (tipoProfissional == true)
                         {
                             Console.Write("Empresa: ");
-                            Contact.empresa = Console.ReadLine();
+                            Cadastro.empresa = Console.ReadLine();
 
                             Console.Write("Cargo: ");
-                            Contact.cargo = Console.ReadLine();
+                            Cadastro.cargo = Console.ReadLine();
                         }
 
                         Console.Write("Celular: ");
-                        Contact.celular = Console.ReadLine();
+                        Cadastro.celular = Console.ReadLine();
 
                         Console.Write("Telefone Residencial: ");
-                        Contact.telefone_resid = Console.ReadLine();
+                        Cadastro.telefone_resid = Console.ReadLine();
 
                         Console.Write("Telefone Comercial: ");
-                        Contact.telefone_comer = Console.ReadLine();
+                        Cadastro.telefone_comer = Console.ReadLine();
 
                         Console.Write("E-mail: ");
-                        Contact.email = Console.ReadLine();
+                        Cadastro.email = Console.ReadLine();
 
                         Console.Write("Twitter: ");
-                        Contact.twitter = Console.ReadLine();
+                        Cadastro.twitter = Console.ReadLine();
 
                         Console.Write("Tipo do logradouro (Rua/Av): ");
-                        Contact.endereco.tipo_logradouro = Console.ReadLine();
+                        Cadastro.endereco.tipo_logradouro = Console.ReadLine();
 
                         Console.Write("Número: ");
-                        Contact.endereco.numero = int.Parse(Console.ReadLine());
+                        Cadastro.endereco.numero = int.Parse(Console.ReadLine());
 
                         Console.Write("Bairro: ");
-                        Contact.endereco.bairro = Console.ReadLine();
+                        Cadastro.endereco.bairro = Console.ReadLine();
 
                         Console.Write("Cidade: ");
-                        Contact.endereco.cidade = Console.ReadLine();
+                        Cadastro.endereco.cidade = Console.ReadLine();
 
                         Console.Write("Estado: ");
-                        Contact.endereco.estado = Console.ReadLine();
+                        Cadastro.endereco.estado = Console.ReadLine();
 
                         Console.Write("CEP: ");
-                        Contact.endereco.cep = long.Parse(Console.ReadLine());
+                        Cadastro.endereco.cep = long.Parse(Console.ReadLine());
 
                         Console.Write("Aniversario - Ano: ");
-                        Contact.aniversario_ano = int.Parse(Console.ReadLine());
-                        while (Contact.aniversario_ano > 2015 && Contact.aniversario_ano > 1)
+                        Cadastro.aniversario_ano = int.Parse(Console.ReadLine());
+                        while (Cadastro.aniversario_ano > 2015 && Cadastro.aniversario_ano > 1)
                         {
                             Console.Write("Favor Digitar um ano válido! Aniversario - Ano: ");
-                            Contact.aniversario_ano = int.Parse(Console.ReadLine());
+                            Cadastro.aniversario_ano = int.Parse(Console.ReadLine());
                         }
 
                         Console.Write("Aniversario - Mês: ");
-                        Contact.aniversario_mes = int.Parse(Console.ReadLine());
-                        while (Contact.aniversario_mes < 1 || Contact.aniversario_mes > 12)
+                        Cadastro.aniversario_mes = int.Parse(Console.ReadLine());
+                        while (Cadastro.aniversario_mes < 1 || Cadastro.aniversario_mes > 12)
                         {
                             Console.Write("Favor Digitar um mês válido! Aniversario - Mês: ");
-                            Contact.aniversario_mes = int.Parse(Console.ReadLine());
+                            Cadastro.aniversario_mes = int.Parse(Console.ReadLine());
                         }
 
                         Console.Write("Aniversario - Dia: ");
-                        Contact.aniversario_dia = int.Parse(Console.ReadLine());
-                        while (Contact.aniversario_dia > 31 || Contact.aniversario_dia < 1)
+                        Cadastro.aniversario_dia = int.Parse(Console.ReadLine());
+                        while (Cadastro.aniversario_dia > 31 || Cadastro.aniversario_dia < 1)
                         {
                             Console.Write("Favor Digitar um dia válido! Aniversario - Dia: ");
-                            Contact.aniversario_dia = int.Parse(Console.ReadLine());
+                            Cadastro.aniversario_dia = int.Parse(Console.ReadLine());
                         }
-                        if ((Contact.aniversario_mes == 4 || Contact.aniversario_mes == 6 || Contact.aniversario_mes == 9 || Contact.aniversario_mes == 11) && (Contact.aniversario_dia >= 31))
+                        if ((Cadastro.aniversario_mes == 4 || Cadastro.aniversario_mes == 6 || Cadastro.aniversario_mes == 9 || Cadastro.aniversario_mes == 11) && (Cadastro.aniversario_dia >= 31))
                         {
                             Console.Write("Favor Digitar um dia válido! Aniversario - Dia: ");
-                            Contact.aniversario_dia = int.Parse(Console.ReadLine());
+                            Cadastro.aniversario_dia = int.Parse(Console.ReadLine());
                         }
-                        else if ((Contact.aniversario_mes == 2) || (Contact.aniversario_dia >= 29))
+                        else if ((Cadastro.aniversario_mes == 2) || (Cadastro.aniversario_dia >= 29))
                         {
                             Console.Write("Favor Digitar um dia válido! Aniversario - Dia: ");
-                            Contact.aniversario_dia = int.Parse(Console.ReadLine());
+                            Cadastro.aniversario_dia = int.Parse(Console.ReadLine());
                         }
 
+                        Agenda.InsereComeco(Cadastro);
+                        Cadastro = new Contato();
                         //Inserindo contato na CLista
                         Console.Write("\nContato cadastrado com sucesso!");
                         Console.ReadKey();
