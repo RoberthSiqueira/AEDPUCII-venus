@@ -74,7 +74,7 @@ namespace TP_02_Agenda
                 Console.WriteLine("| 2 – Remover contato                                             |");
                 Console.WriteLine("| 3 – Alterar dados do contato (Todos os Contatos)                |");
                 Console.WriteLine("| 4 – Pesquisar contato (Por nome ou apelido)                     |");
-                Console.WriteLine("| 5 – Listar contatos por tipo                                     |");
+                Console.WriteLine("| 5 – Listar contatos por tipo                                    |");
                 Console.WriteLine("| 6 – Listar todos os contatos                                    |");
                 Console.WriteLine("| 7 - Listar aniversariantes do mês                               |");
                 Console.WriteLine("| 8 – Sair                                                        |");

@@ -115,7 +115,7 @@ namespace TP_02_Agenda
                     Console.Write("\nAniversário: " + contato.aniversario_dia + "/" + contato.aniversario_mes + "/" + contato.aniversario_ano);
 
                     Console.Write("\n\n===========================================");
-                    Console.Write("\t Alteração do Dados do Contato");
+                    Console.Write("\t\n Alteração do Dados do Contato");
                     Console.Write("\n===========================================\n\n");
 
                     Console.Write("Nickname: ");
@@ -125,68 +125,68 @@ namespace TP_02_Agenda
 
                     if (contato.tipo.Equals(2))
                     {
-                        Console.Write("\nEmpresa: ");
+                        Console.Write("Empresa: ");
                         Contact.empresa = Console.ReadLine();
                         contato.empresa = Contact.empresa;
 
-                        Console.Write("\nCargo: ");
+                        Console.Write("Cargo: ");
                         Contact.cargo = Console.ReadLine();
                         contato.cargo = Contact.cargo;
                     }
 
-                    Console.Write("\nCelular: ");
+                    Console.Write("Celular: ");
                     Contact.celular = Console.ReadLine();
                     contato.celular = Contact.celular;
 
-                    Console.Write("\nTelefone Residencial: ");
+                    Console.Write("Telefone Residencial: ");
                     Contact.telefone_resid = Console.ReadLine();
                     contato.telefone_resid = Contact.telefone_resid;
 
-                    Console.Write("\nTelefone Comercial: ");
+                    Console.Write("Telefone Comercial: ");
                     Contact.telefone_comer = Console.ReadLine();
                     contato.telefone_comer = Contact.telefone_comer;
 
-                    Console.Write("\nE-mail: ");
+                    Console.Write("E-mail: ");
                     Contact.email = Console.ReadLine();
                     contato.email = Contact.email;
 
-                    Console.Write("\nTwitter: ");
+                    Console.Write("Twitter: ");
                     Contact.twitter = Console.ReadLine();
                     contato.twitter = Contact.twitter;
 
-                    Console.Write("\nTipo do logradouro (Rua/Av): ");
+                    Console.Write("Tipo do logradouro (Rua/Av): ");
                     Contact.endereco.tipo_logradouro = Console.ReadLine();
                     contato.endereco.tipo_logradouro = Contact.endereco.tipo_logradouro;
 
-                    Console.Write("\nNúmero: ");
+                    Console.Write("Número: ");
                     Contact.endereco.numero = int.Parse(Console.ReadLine());
                     contato.endereco.numero = Contact.endereco.numero;
 
-                    Console.Write("\nBairro: ");
+                    Console.Write("Bairro: ");
                     Contact.endereco.bairro = Console.ReadLine();
                     contato.endereco.bairro = Contact.endereco.bairro;
 
-                    Console.Write("\nCidade: ");
+                    Console.Write("Cidade: ");
                     Contact.endereco.cidade = Console.ReadLine();
                     contato.endereco.cidade = Contact.endereco.cidade;
 
-                    Console.Write("\nEstado: ");
+                    Console.Write("Estado: ");
                     Contact.endereco.estado = Console.ReadLine();
                     contato.endereco.estado = Contact.endereco.estado;
 
-                    Console.Write("\nCEP: ");
+                    Console.Write("CEP: ");
                     Contact.endereco.cep = long.Parse(Console.ReadLine());
                     contato.endereco.cep = Contact.endereco.cep;
 
-                    Console.Write("\nAniversario - Dia: ");
+                    Console.Write("Aniversario - Dia: ");
                     Contact.aniversario_dia = int.Parse(Console.ReadLine());
                     contato.aniversario_dia = Contact.aniversario_dia;
 
-                    Console.Write("\nAniversario - Mês: ");
+                    Console.Write("Aniversario - Mês: ");
                     Contact.aniversario_mes = int.Parse(Console.ReadLine());
                     contato.aniversario_mes = Contact.aniversario_mes;
 
-                    Console.Write("\nAniversario - Ano: ");
+                    Console.Write("Aniversario - Ano: ");
                     Contact.aniversario_ano = int.Parse(Console.ReadLine());
                     contato.aniversario_ano = Contact.aniversario_ano;
 
